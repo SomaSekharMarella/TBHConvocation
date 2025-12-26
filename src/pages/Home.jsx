@@ -25,9 +25,13 @@ const Home = () => {
   }, [])
 
   const handleEnterStory = () => {
-    if (isConnected) {
-      setShowStory(true)
-    }
+    // Works for both wallet-connected and direct entry
+    setShowStory(true)
+  }
+
+  const handleDirectEnter = () => {
+    // Direct entry without wallet - always works
+    setShowStory(true)
   }
 
   if (isLoading) {
@@ -43,8 +47,8 @@ const Home = () => {
   }
 
   // Show wallet gate if not connected OR if connected but story not shown yet
-  if (!isConnected || !showStory) {
-    return <WalletGate onEnter={handleEnterStory} isConnected={isConnected} onDirectEnter={handleEnterStory} />
+  if (!showStory) {
+    return <WalletGate onEnter={handleEnterStory} isConnected={isConnected} onDirectEnter={handleDirectEnter} />
   }
 
   return (
@@ -58,10 +62,10 @@ const Home = () => {
       <div className="fixed inset-0 gradient-mesh pointer-events-none" />
       <div className="fixed inset-0 bg-gradient-to-b from-dark-bg via-dark-surface to-dark-bg pointer-events-none opacity-90" />
       
-      {/* Enhanced Graphics - Geometric Shapes */}
+      {/* Enhanced Graphics - Geometric Shapes (Reduced on Mobile) */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        {/* Animated Circles */}
-        {[...Array(3)].map((_, i) => (
+        {/* Animated Circles - Fewer on Mobile */}
+        {[...Array(typeof window !== 'undefined' && window.innerWidth < 640 ? 2 : 3)].map((_, i) => (
           <motion.div
             key={`circle-${i}`}
             className="absolute rounded-full border-2"
@@ -85,8 +89,8 @@ const Home = () => {
           />
         ))}
 
-        {/* Floating Geometric Shapes */}
-        {[...Array(6)].map((_, i) => (
+        {/* Floating Geometric Shapes - Fewer on Mobile */}
+        {[...Array(typeof window !== 'undefined' && window.innerWidth < 640 ? 3 : 6)].map((_, i) => (
           <motion.div
             key={`shape-${i}`}
             className="absolute"
@@ -142,8 +146,8 @@ const Home = () => {
           />
         ))}
 
-        {/* Subtle animated particles background */}
-        {[...Array(30)].map((_, i) => (
+        {/* Subtle animated particles background - Fewer on Mobile */}
+        {[...Array(typeof window !== 'undefined' && window.innerWidth < 640 ? 15 : 30)].map((_, i) => (
           <motion.div
             key={`particle-${i}`}
             className="absolute rounded-full"

@@ -207,25 +207,78 @@
     width: 100%;
     max-width: 900px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 10px;
     overflow: visible;
+  }
+
+  @media (min-width: 640px) {
+    .image-container {
+      padding: 15px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .image-container {
+      padding: 20px;
+    }
   }
 
   .image-wrapper {
     position: relative;
     width: 100%;
-    border-radius: 12px;
+    border-radius: 8px;
     overflow: visible;
-    padding: 4px;
+    padding: 2px;
+  }
+
+  @media (min-width: 640px) {
+    .image-wrapper {
+      border-radius: 12px;
+      padding: 4px;
+    }
   }
 
   .image-wrapper img {
     width: 100%;
     height: auto;
     display: block;
-    border-radius: 8px;
+    border-radius: 6px;
     object-fit: contain;
-    max-height: 600px;
+    max-height: 400px;
+  }
+
+  @media (min-width: 640px) {
+    .image-wrapper img {
+      border-radius: 8px;
+      max-height: 500px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .image-wrapper img {
+      max-height: 600px;
+    }
+  }
+
+  /* Mobile Optimizations */
+  @media (max-width: 640px) {
+    .emoji-icon {
+      width: 60px;
+      height: 60px;
+      font-size: 2rem;
+      border-radius: 15px;
+    }
+
+    /* Reduce graphics on mobile for performance */
+    .particle-field::before {
+      display: none;
+    }
+  }
+
+  /* Touch optimizations */
+  .touch-manipulation {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
   }
 }
 

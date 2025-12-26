@@ -179,15 +179,15 @@ const WalletGate = ({ onConnect, onEnter, isConnected, onDirectEnter }) => {
         ))}
       </div>
 
-      {/* Main Content */}
+      {/* Main Content - Mobile Optimized */}
       <motion.div
-        className="relative z-10 text-center px-6 max-w-3xl mx-auto"
+        className="relative z-10 text-center px-4 sm:px-6 max-w-3xl mx-auto"
         variants={perspective3D}
         style={{ transformStyle: 'preserve-3d' }}
       >
-        {/* Love Symbol Header */}
+        {/* Love Symbol Header - Smaller on Mobile */}
         <motion.div
-          className="flex justify-center gap-3 mb-6"
+          className="flex justify-center gap-2 sm:gap-3 mb-4 sm:mb-6"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -195,7 +195,7 @@ const WalletGate = ({ onConnect, onEnter, isConnected, onDirectEnter }) => {
           {[...Array(3)].map((_, i) => (
             <motion.span
               key={i}
-              className="text-4xl md:text-5xl"
+              className="text-2xl sm:text-4xl md:text-5xl"
               animate={{
                 scale: [1, 1.3, 1],
                 rotate: [0, 15, -15, 0],
@@ -213,37 +213,30 @@ const WalletGate = ({ onConnect, onEnter, isConnected, onDirectEnter }) => {
         </motion.div>
 
         <motion.h1
-          className="text-4xl md:text-6xl lg:text-7xl font-heading font-bold mb-4 heading-cyan"
+          className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold mb-3 sm:mb-4 px-2 heading-cyan"
           variants={rotate3D}
-          whileHover={{
-            scale: 1.05,
-            transition: { duration: 0.3 }
-          }}
-          style={{ letterSpacing: '0.02em' }}
+          style={{ letterSpacing: '0.02em', lineHeight: '1.2' }}
         >
           Konni Journeys Scroll Cheyyalem.
         </motion.h1>
         
         <motion.h2
-          className="text-2xl md:text-4xl lg:text-5xl font-heading font-semibold mb-6 heading-violet"
+          className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-heading font-semibold mb-4 sm:mb-6 px-2 heading-violet"
           variants={rotate3D}
           transition={{ delay: 0.2 }}
-          whileHover={{
-            scale: 1.05,
-            transition: { duration: 0.3 }
-          }}
-          style={{ letterSpacing: '0.02em' }}
+          style={{ letterSpacing: '0.02em', lineHeight: '1.3' }}
         >
           Unlock Cheyyali.
         </motion.h2>
 
         <motion.p
-          className="text-base md:text-lg lg:text-xl text-gray-300 mb-10 leading-relaxed max-w-2xl mx-auto font-elegant"
+          className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 mb-6 sm:mb-8 md:mb-10 leading-relaxed max-w-2xl mx-auto font-elegant px-2"
           variants={blurToFocus}
           transition={{ delay: 0.4 }}
           style={{
             textShadow: '0 0 10px rgba(255, 255, 255, 0.1)',
             letterSpacing: '0.01em',
+            lineHeight: '1.6',
           }}
         >
           Ee story chadavadaniki permission kaadhu…<br />
@@ -356,29 +349,32 @@ const WalletGate = ({ onConnect, onEnter, isConnected, onDirectEnter }) => {
                       }
 
                       return (
-                        <div className="flex flex-col items-center gap-4">
-                          <div className="flex items-center gap-4 mb-2">
+                        <div className="flex flex-col items-center gap-3 sm:gap-4 w-full">
+                          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 mb-2 w-full sm:w-auto">
                             <button
                               onClick={openChainModal}
                               type="button"
-                              className="px-6 py-3 bg-gray-800/50 border border-purple-500/30 rounded-lg hover:border-purple-500 transition-colors backdrop-blur-sm"
+                              className="px-4 sm:px-6 py-3 bg-gray-800/50 border border-purple-500/30 rounded-lg active:border-purple-500 transition-colors backdrop-blur-sm text-sm sm:text-base touch-manipulation"
+                              style={{ minHeight: '44px' }}
                             >
                               {chain.hasIcon && (
                                 <div
                                   style={{
                                     background: chain.iconBackground,
-                                    width: 20,
-                                    height: 20,
+                                    width: 18,
+                                    height: 18,
                                     borderRadius: 999,
                                     overflow: 'hidden',
-                                    marginRight: 8,
+                                    marginRight: 6,
+                                    display: 'inline-block',
+                                    verticalAlign: 'middle',
                                   }}
                                 >
                                   {chain.iconUrl && (
                                     <img
                                       alt={chain.name ?? 'Chain icon'}
                                       src={chain.iconUrl}
-                                      style={{ width: 20, height: 20 }}
+                                      style={{ width: 18, height: 18 }}
                                     />
                                   )}
                                 </div>
@@ -389,7 +385,8 @@ const WalletGate = ({ onConnect, onEnter, isConnected, onDirectEnter }) => {
                             <button
                               onClick={openAccountModal}
                               type="button"
-                              className="px-6 py-3 bg-gradient-to-r from-purple-500 to-cyan-500 text-white font-semibold rounded-lg hover:shadow-lg transition-all"
+                              className="px-4 sm:px-6 py-3 bg-gradient-to-r from-purple-500 to-cyan-500 text-white font-semibold rounded-lg active:shadow-lg transition-all text-sm sm:text-base touch-manipulation"
+                              style={{ minHeight: '44px' }}
                             >
                               {account.displayName}
                               {account.displayBalance
@@ -401,9 +398,10 @@ const WalletGate = ({ onConnect, onEnter, isConnected, onDirectEnter }) => {
                           <button
                             onClick={handleEnterStory}
                             type="button"
-                            className="px-10 py-5 bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 text-white font-bold text-lg md:text-xl rounded-xl glow-box-violet border-2 border-pink-400/50 hover:scale-110 hover:border-pink-400 transition-all duration-300 shadow-2xl"
+                            className="w-full sm:w-auto px-6 sm:px-10 py-4 sm:py-5 bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 text-white font-bold text-base sm:text-lg md:text-xl rounded-xl glow-box-violet border-2 border-pink-400/50 active:scale-95 hover:scale-110 active:border-pink-400 transition-all duration-300 shadow-2xl touch-manipulation"
                             style={{
                               boxShadow: '0 0 30px rgba(255, 107, 157, 0.5), 0 0 60px rgba(139, 92, 246, 0.3)',
+                              minHeight: '48px',
                             }}
                           >
                             ❤️ Enter Story ❤️

@@ -66,7 +66,7 @@ const StorySection = ({ section, index }) => {
   return (
     <motion.section
       ref={ref}
-      className={`min-h-screen flex items-center justify-center px-4 md:px-6 py-16 md:py-20 ${
+      className={`min-h-screen flex items-center justify-center px-3 sm:px-4 md:px-6 py-12 sm:py-16 md:py-20 ${
         section.isHighlight ? 'bg-dark-surface gradient-mesh' : 'bg-dark-bg'
       }`}
       style={{ 
@@ -79,7 +79,7 @@ const StorySection = ({ section, index }) => {
       animate={isInView ? "animate" : "initial"}
       variants={section3D}
     >
-      <div className="max-w-4xl mx-auto w-full relative">
+      <div className="max-w-4xl mx-auto w-full relative px-2 sm:px-0">
         {/* Decorative Graphics for Section */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           {/* Corner Accents */}
@@ -155,12 +155,12 @@ const StorySection = ({ section, index }) => {
             </motion.div>
           )}
           <motion.h2
-            className={`text-3xl md:text-5xl lg:text-6xl font-heading text-center ${
+            className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-heading text-center px-2 ${
               section.isHighlight 
                 ? 'heading-cyan' 
                 : 'heading-violet'
             }`}
-            style={{ letterSpacing: '0.02em' }}
+            style={{ letterSpacing: '0.02em', lineHeight: '1.2' }}
             whileHover={{
               scale: 1.05,
               transition: { duration: 0.3 }
@@ -202,12 +202,13 @@ const StorySection = ({ section, index }) => {
           </motion.div>
         )}
 
-        {/* Content */}
+        {/* Content - Mobile Optimized */}
         <motion.div
-          className="space-y-6 text-lg md:text-xl leading-relaxed text-gray-200"
+          className="space-y-4 sm:space-y-6 text-base sm:text-lg md:text-xl leading-relaxed text-gray-200 px-2 sm:px-0"
           variants={staggerText}
           initial="initial"
           animate={isInView ? "animate" : "initial"}
+          style={{ lineHeight: '1.7' }}
         >
           {section.content.map((line, lineIndex) => {
             if (line === '') {
